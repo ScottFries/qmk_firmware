@@ -14,6 +14,27 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /* Keymap 0: Basic layer
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |  L8    |   1  |   2  |   3  |   4  |   5  |   [  |           |  ]   |   6  |   7  |   8  |   9  |   0  |   \    |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |  ~L2   |  '"  |   ,  |   .  |   P  |   Y  |   _  |           |  ;   |   F  |   G  |   C  |   R  |   L  |   /    |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * | Caps   |   A  |   O  |   E  |   U  |   I  |------|           |------|   D  |   H  |   T  |   N  |   S  |   -    |
+  * |--------+------+------+------+------+------|Macro1|           |Macro2|------+------+------+------+------+--------|
+  * |LShift (|   ;  |   Q  |   J  |   K  |   X  | Play |           | Play |   B  |   M  |   W  |   V  |   Z  |=/RShift|
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |M1r/Ctr|Cp/~L4|Pt/~L7|Scr/Gui|SysReq/Alt|                                   |  Up  | Down | Left |Right |  M2r  |
+  *   `----------------------------------'                                       `-----------------------------------'
+  *                                      ,---------------.       ,--------------.
+  *                                      |Esc/Hyp|  Gui  |       |MStop/Meh|Del |
+  *                               ,------|-------|-------|       |------+--------+------.
+  *                               |      |       |Hom/Alt|       |PgU/~L5|      |      |
+  *                               |  Tab | Space |-------|       |-------|BackSp|Enter |
+  *                               |      |       |End/Ctr|       |PgD/~L6|      |      |
+  *                               `----------------------'       `----------------------'
+  */
   [0] = LAYOUT_ergodox_pretty(
     TO(8),          KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LBRACKET,                                    KC_RBRACKET,    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSLASH,
     MO(2),          KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           KC_UNDS,                                        KC_SCOLON,      KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,
@@ -24,6 +45,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     LALT_T(KC_HOME),KC_PGUP,
                                                                                     KC_TAB,         KC_SPACE,       LCTL_T(KC_END), KC_PGDOWN,      KC_BSPACE,      KC_ENTER
   ),
+  /* Keymap 1: QWERTY
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |        +------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |        |
+  * |        +------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |        |
+  * |        +------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |Z/LCtl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//RCtl|        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |        |        |        |       |                                       |      |      |      |      |       |
+  *   `----------------------------------'                                       `-----------------------------------'
+  *                                      ,---------------.       ,--------------.
+  *                                      |       |       |       |       |      |
+  *                               ,------|-------|-------|       |       --------+------.
+  *                               |      |       |       |       |       |      |      |
+  *                               |      |       |-------|       |       |      |      |
+  *                               |      |       |       |       |       |      |      |
+  *                               `----------------------'       `----------------------'
+  */
   [1] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
@@ -34,6 +76,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 2: Symbols
+  *
+  * ,---------------------------------------------------.           ,--------------------------------------------------.
+  * |         |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+  * |         |   !  |   @  |   {  |   }  |   |  |      |           |      |  Up  |   7  |   8  |   9  |   *  |   F12  |
+  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |         |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |    -   |
+  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |         |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
+  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |       |      |      |      |      |                                       |      |   .  |   0  |   =  |      |
+  *   `-----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |Animat| Red  |       |Toggle|Solid |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |Bright|Bright| Green|       |      |Hue-  |Hue+  |
+  *                                 |ness- |ness+ |------|       |------|      |      |
+  *                                 |      |      | Blue |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [2] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_LCBR,        KC_RCBR,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UP,          KC_7,           KC_8,           KC_9,           KC_ASTR,        KC_F12,
@@ -44,6 +107,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     HSV_86_255_128, KC_TRANSPARENT,
                                                                                     RGB_VAD,        RGB_VAI,        HSV_172_255_255,KC_TRANSPARENT, RGB_HUD,        RGB_HUI
   ),
+  /* Keymap 3: System Control
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |  Power |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |      |      | MsUp |      |      |Bright|           |Bright|      |      |      |      |      |  Sleep |
+  * |--------+------+------+------+------+------|  Up  |           |  Dn  |------+------+------+------+------+--------|
+  * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      |      |      | NKRO |      |  Wake  |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   | Oryx |      |      |      |      |                                       |Pause | Play | Prev | Next |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |WhlLef|       |WhlRgh| Mclk |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |WhlUp |      |      |
+  *                                 | VolUp| VolDn|------|       |------| Lclk | Rclk |
+  *                                 |      |      | Mute |       |WhlDn |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [3] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_POWER,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_BRIGHTNESS_UP,                                KC_BRIGHTNESS_DOWN,KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_SLEEP,
@@ -54,6 +138,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_MS_WH_UP,
                                                                                     KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_MS_WH_DOWN,  KC_MS_BTN1,     KC_MS_BTN2
   ),
+  /* Keymap 4: IDs
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        | YYF  | YYFG | SRFW |  SFT | SFSF |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [4] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -64,6 +169,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 5: C++
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |   L9   | Class|Struct|public|protec|privat|      |           |      |  for |while |  if  | ifel | else |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * | # once |ctors |ctorsd|      |      | templ| name |           |      | fori |forea |lambda|      |      |        |
+  * |--------+------+------+------+------+------| space|           |      |------+------+------+------+------+--------|
+  * | #ifdef |string|      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|  ns  |           |  ns  |------+------+------+------+------+--------|
+  * |#include|array |vector| umap | map  |      |  bal |           | t sim|unique|shared|      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [5] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -74,6 +200,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 6: UE4
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        | PROP | FUNC |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [6] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -84,6 +231,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 7: Python
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [7] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -94,6 +262,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 8: Navigate
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |   L0   |  L1  |  L2  |  L3  |  L4  |  L5  |      |           |      |  L6  |  L7  |  L8  |  L9  |  L0  |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [8] = LAYOUT_ergodox_pretty(
     TO(0),          TO(1),          TO(2),          TO(3),          TO(4),          TO(5),          KC_TRANSPARENT,                                 KC_TRANSPARENT, TO(6),          TO(7),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
