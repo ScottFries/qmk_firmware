@@ -6,6 +6,16 @@
 #define KC_PC_COPY LCTL(KC_C)
 #define KC_PC_PASTE LCTL(KC_V)
 
+#define L_DVORAK    0
+#define L_QWERTY    1
+#define L_SYMBOLS   2
+#define L_SYS_CTRL  3
+#define L_IDS       4
+#define L_CPP       5
+#define L_UE4       6
+#define L_PYTHON    7
+#define L_NAVIGATE  8
+
 enum custom_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
   HSV_0_255_255,
@@ -40,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(2),          KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           KC_UNDS,                                        KC_SCOLON,      KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,
     KC_CAPSLOCK,    KC_A,           KC_O,           KC_E,           KC_U,           KC_I,                                                                           KC_D,           KC_H,           KC_T,           KC_N,           KC_S,           KC_MINUS,
     KC_LSPO,        KC_GRAVE,       KC_Q,           KC_J,           KC_K,           KC_X,           DYN_MACRO_PLAY1,                                DYN_MACRO_PLAY2,KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           RSFT_T(KC_EQUAL),
-    LCTL_T(DYN_REC_START1),KC_PC_COPY,     KC_PC_PASTE,    LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                                                                KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
+    LCTL_T(DYN_REC_START1),LT(KC_PC_COPY, L_IDS),LT(KC_PC_PASTE, L_PYTHON),    LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                            KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
                                                                                                     MT(MOD_HYPR, KC_ESCAPE),KC_LGUI,        MT(MOD_MEH, DYN_REC_STOP),KC_DELETE,
-                                                                                                                    LALT_T(KC_HOME),KC_PGUP,
-                                                                                    KC_TAB,         KC_SPACE,       LCTL_T(KC_END), KC_PGDOWN,      KC_BSPACE,      KC_ENTER
+                                                                                                                    LALT_T(KC_HOME),        LT(KC_PGUP, L_CPP),
+                                                                                    KC_TAB,         KC_SPACE,       LCTL_T(KC_END),         LT(KC_PGDOWN, L_UE4),   KC_BSPACE,      KC_ENTER
   ),
   /* Keymap 1: QWERTY
   *
