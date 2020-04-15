@@ -21,6 +21,13 @@ enum custom_keycodes {
   HSV_0_255_255,
   HSV_86_255_128,
   HSV_172_255_255,
+
+  #define YYF_INJECT_KEYCODES
+  #include "custom_keys/id.inl"
+  #include "custom_keys/cpp.inl"
+  #include "custom_keys/ue4.inl"
+  #include "custom_keys/python.inl"
+  #undef YYF_INJECT_KEYCODES
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,10 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(2),          KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           KC_UNDS,                                        KC_SCOLON,      KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,
     KC_CAPSLOCK,    KC_A,           KC_O,           KC_E,           KC_U,           KC_I,                                                                           KC_D,           KC_H,           KC_T,           KC_N,           KC_S,           KC_MINUS,
     KC_LSPO,        KC_GRAVE,       KC_Q,           KC_J,           KC_K,           KC_X,           DYN_MACRO_PLAY1,                                DYN_MACRO_PLAY2,KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           RSFT_T(KC_EQUAL),
-    LCTL_T(DYN_REC_START1),LT(KC_PC_COPY, L_IDS),LT(KC_PC_PASTE, L_PYTHON),    LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                            KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
+    LCTL_T(DYN_REC_START1),LT(L_IDS, KC_PC_COPY),LT(L_PYTHON, KC_PC_PASTE),    LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                            KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
                                                                                                     MT(MOD_HYPR, KC_ESCAPE),KC_LGUI,        MT(MOD_MEH, DYN_REC_STOP),KC_DELETE,
-                                                                                                                    LALT_T(KC_HOME),        LT(KC_PGUP, L_CPP),
-                                                                                    KC_TAB,         KC_SPACE,       LCTL_T(KC_END),         LT(KC_PGDOWN, L_UE4),   KC_BSPACE,      KC_ENTER
+                                                                                                                    LALT_T(KC_HOME),        LT(L_CPP, KC_PGUP),
+                                                                                    KC_TAB,         KC_SPACE,       LCTL_T(KC_END),         LT(L_UE4, KC_PGDOWN),   KC_BSPACE,      KC_ENTER
   ),
   /* Keymap 1: QWERTY
   *
@@ -170,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                                 `--------------------'       `--------------------'
   */
   [4] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, ID_YYF,         ID_YYFG,        ID_SRFW,        ID_SFT,         ID_SFSF,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -182,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap 5: C++
   *
   * ,--------------------------------------------------.           ,--------------------------------------------------.
-  * |   L9   | Class|Struct|public|protec|privat|      |           |      |  for |while |  if  | ifel | else |        |
+  * |        | Class|Struct|public|protec|privat|      |           |      |  for |while |  if  | ifel | else |        |
   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
   * | # once |ctors |ctorsd|      |      | templ| name |           |      | fori |forea |lambda|      |      |        |
   * |--------+------+------+------+------+------| space|           |      |------+------+------+------+------+--------|
@@ -201,10 +208,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                                 `--------------------'       `--------------------'
   */
   [5] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, CPP_CLASS,      CPP_STRUCT,     CPP_PUBLIC,     CPP_PROTECTED,  CPP_PRIVATE,    KC_TRANSPARENT,                                 KC_TRANSPARENT, CPP_FOR,        CPP_WHILE,      CPP_IF,         CPP_ELIF,       CPP_ELSE,       KC_TRANSPARENT,
+    CPP_PO,         CPP_CTORS,      CPP_CTORDEFS,   KC_TRANSPARENT, KC_TRANSPARENT, CPP_TEMPLATE,   CPP_NS,                                         KC_TRANSPARENT, CPP_FORI,       CPP_FOREACH,    CPP_LAMBDA,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    CPP_IFDEF,      CPP_STRING,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    CPP_INCLUDE,    CPP_ARRAY,      CPP_VECTOR,     CPP_UMAP,       CPP_MAP,        KC_TRANSPARENT, CPP_NSB,                                        CPP_NSTS,       CPP_UNIQUE,     CPP_SHARED,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
@@ -232,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                                 `--------------------'       `--------------------'
   */
   [6] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, UE4_UPROP,       UE4_UFUNC,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -350,6 +357,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         #endif
       }
       return false;
+
+    #define YYF_INJECT_KEYCODE_HANDLERS
+    #include "custom_keys/id.inl"
+    #include "custom_keys/cpp.inl"
+    #include "custom_keys/ue4.inl"
+    #include "custom_keys/python.inl"
+    #undef YYF_INJECT_KEYCODE_HANDLERS
   }
   return true;
 }

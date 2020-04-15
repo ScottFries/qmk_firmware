@@ -1,0 +1,1 @@
+#define YYF_MACRO(macro) ({if (record->event.pressed) { SEND_STRING(macro); }})

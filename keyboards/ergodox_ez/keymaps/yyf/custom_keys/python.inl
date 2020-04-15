@@ -1,0 +1,9 @@
+#include "common.inl"
+
+#ifdef YYF_INJECT_KEYCODES
+
+#endif  // YYF_INJECT_KEYCODES
+
+#ifdef YYF_INJECT_KEYCODE_HANDLERS
+
+#endif  // YYF_INJECT_KEYCODE_HANDLERS
