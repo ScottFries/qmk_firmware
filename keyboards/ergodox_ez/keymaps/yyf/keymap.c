@@ -42,10 +42,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |--------+------+------+------+------+------|Macro1|           |Macro2|------+------+------+------+------+--------|
   * |LShift (|   ;  |   Q  |   J  |   K  |   X  | Play |           | Play |   B  |   M  |   W  |   V  |   Z  |=/RShift|
   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-  *   |M1r/Ctr|Cp/~L4|Pt/~L7|Scr/Gui|SysReq/Alt|                                   |  Up  | Down | Left |Right |  M2r  |
+  *   | M1r  |Cp/~L4|Pt/~L7|Scr/Gui|SysReq/Alt|                                   |  Up  | Down | Left |Right |  M2r |
   *   `----------------------------------'                                       `-----------------------------------'
   *                                      ,---------------.       ,--------------.
-  *                                      |Esc/Hyp|  Gui  |       |MStop/Meh|Del |
+  *                                      |Esc/Meh|  Gui  |       | MStop | Del  |
   *                               ,------|-------|-------|       |------+--------+------.
   *                               |      |       |Hom/Alt|       |PgU/~L5|      |      |
   *                               |  Tab | Space |-------|       |-------|BackSp|Enter |
@@ -57,8 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(2),          KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           KC_UNDS,                                        KC_SCOLON,      KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,
     KC_CAPSLOCK,    KC_A,           KC_O,           KC_E,           KC_U,           KC_I,                                                                           KC_D,           KC_H,           KC_T,           KC_N,           KC_S,           KC_MINUS,
     KC_LSPO,        KC_GRAVE,       KC_Q,           KC_J,           KC_K,           KC_X,           DYN_MACRO_PLAY1,                                DYN_MACRO_PLAY2,KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           RSFT_T(KC_EQUAL),
-    LCTL_T(DYN_REC_START1),LT(L_IDS, LCTL(KC_C)),LT(L_PYTHON, LCTL(KC_V)),    LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                            KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
-                                                                                                    MT(MOD_HYPR, KC_ESCAPE),KC_LGUI,        MT(MOD_MEH, DYN_REC_STOP),KC_DELETE,
+    DYN_REC_START1, LT(L_IDS, LCTL(KC_C)),LT(L_PYTHON, LCTL(KC_V)),LGUI_T(KC_SCROLLLOCK),LALT_T(KC_PSCREEN),                                                                        KC_UP,          KC_DOWN,        KC_LEFT,        KC_RIGHT,       DYN_REC_START2,
+                                                                                                    MT(MOD_MEH, KC_ESCAPE),KC_LGUI,         DYN_REC_STOP,           KC_DELETE,
                                                                                                                     LALT_T(KC_HOME),        LT(L_CPP, KC_PGUP),
                                                                                     KC_TAB,         KC_SPACE,       LCTL_T(KC_END),         LT(L_UE4, KC_PGDOWN),   KC_BSPACE,      KC_ENTER
   ),
