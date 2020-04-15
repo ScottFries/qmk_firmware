@@ -70,8 +70,8 @@ case CPP_CLASS: // class
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "};"
+        SS_TAP(X_DOWN)
+        ";"
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
@@ -85,8 +85,8 @@ case CPP_STRUCT: // struct
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "};"
+        SS_TAP(X_DOWN)
+        ";"
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
@@ -103,22 +103,28 @@ case CPP_TEMPLATE: // template<>
 case CPP_PUBLIC: // public:
     YYF_MACRO
     (
+        SS_LSFT(SS_TAP(X_TAB))
         "public:"
         SS_TAP(X_ENTER)
+        SS_TAP(X_TAB)
     );
     return false;
 case CPP_PROTECTED: // protected:
     YYF_MACRO
     (
+        SS_LSFT(SS_TAP(X_TAB))
         "protected:"
         SS_TAP(X_ENTER)
+        SS_TAP(X_TAB)
     );
     return false;
 case CPP_PRIVATE: // private:
     YYF_MACRO
     (
+        SS_LSFT(SS_TAP(X_TAB))
         "private:"
         SS_TAP(X_ENTER)
+        SS_TAP(X_TAB)
     );
     return false;
 case CPP_NS: // namespace
@@ -128,8 +134,8 @@ case CPP_NS: // namespace
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}  // "
+        SS_TAP(X_DOWN)
+        "  // "
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
@@ -143,8 +149,8 @@ case CPP_NSB: // namespace Balance
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}  // namespace Balance"
+        SS_TAP(X_DOWN)
+        "  // namespace Balance"
         SS_TAP(X_UP)
         SS_TAP(X_END)
     );
@@ -156,14 +162,15 @@ case CPP_NSTS: // namespace tesla::sim
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
+        SS_LSFT(SS_TAP(X_TAB))
         "namespace sim"
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "} // namespace sim"
-        SS_TAP(X_ENTER)
-        "} // namespace tesla"
+        SS_TAP(X_DOWN)
+        " // namespace sim"
+        SS_TAP(X_DOWN)
+        " // namespace tesla"
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -176,9 +183,6 @@ case CPP_FOR: // for () {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -192,9 +196,6 @@ case CPP_FORI: // for (int i = 0; i < ; ++i) {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -213,9 +214,6 @@ case CPP_FOREACH: // for (auto& : ) {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -232,9 +230,6 @@ case CPP_WHILE: // while () {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -248,9 +243,6 @@ case CPP_IF: // if () {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -264,9 +256,6 @@ case CPP_ELIF: // else if () {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
@@ -280,9 +269,6 @@ case CPP_ELSE: // else {}
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "}"
-        SS_TAP(X_UP)
     );
     return false;
 case CPP_LAMBDA: // auto = [](){};
@@ -292,8 +278,8 @@ case CPP_LAMBDA: // auto = [](){};
         SS_TAP(X_ENTER)
         "{"
         SS_TAP(X_ENTER)
-        SS_TAP(X_ENTER)
-        "};"
+        SS_TAP(X_DOWN)
+        ";"
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_UP)
@@ -329,38 +315,32 @@ case CPP_CTORDEFS: // Defines each of the 6 special member functions
         SS_LCTRL("v")"::"SS_LCTRL("v")"()"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
         SS_LCTRL("v")"::"SS_LCTRL("v")"(const "SS_LCTRL("v")"& other)"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
         SS_LCTRL("v")"::"SS_LCTRL("v")"("SS_LCTRL("v")"&& other)"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
         SS_LCTRL("v")"& "SS_LCTRL("v")"::operator=(const "SS_LCTRL("v")"& other)"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
         SS_LCTRL("v")"& "SS_LCTRL("v")"::operator=("SS_LCTRL("v")"&& other)"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
         SS_LCTRL("v")"::~"SS_LCTRL("v")"()"
         SS_TAP(X_ENTER)
         "{"
-        SS_TAP(X_ENTER)
-        "}"
+        SS_TAP(X_DOWN)
         SS_TAP(X_ENTER)
     );
     return false;
