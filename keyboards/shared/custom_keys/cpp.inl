@@ -3,10 +3,14 @@
 #ifdef YYF_INJECT_KEYCODES
 CPP_PO, // #pragma once
 CPP_IFDEF, // #pragma ifdef endif
-CPP_INCLUDE,
+CPP_PIF, // #pragma if endif
+CPP_INCLUDE, // #include 
+CPP_INCLUDEQ, // #include ""
+CPP_INCLUDEB, // #include <>
 CPP_CLASS, // class
 CPP_STRUCT, // struct
 CPP_TEMPLATE, // template<>
+CPP_TYPENAME, // typename 
 CPP_PUBLIC, // public:
 CPP_PROTECTED, // protected:
 CPP_PRIVATE, // private:
@@ -17,6 +21,7 @@ CPP_FOR, // for () {}
 CPP_FORI, // for (int i = 0; i < ; ++i) {}
 CPP_FOREACH, // for (auto& : ) {}
 CPP_WHILE, // while () {}
+CPP_DOWHILE, // do {} while ();
 CPP_IF, // if () {}
 CPP_ELIF, // else if () {}
 CPP_ELSE, // else {}
@@ -30,6 +35,7 @@ CPP_UMAP, // std::unordered_map<>
 CPP_MAP, // std::map<>
 CPP_UNIQUE, // std::unique_ptr<>
 CPP_SHARED, // std::shared_ptr<>
+CPP_WEAK, // std::weak_ptr<>
 #endif  // YYF_INJECT_KEYCODES
 
 #ifdef YYF_INJECT_KEYCODE_HANDLERS
@@ -60,8 +66,39 @@ case CPP_IFDEF: // #pragma ifdef endif
         SS_TAP(X_END)
     );
     return false;
+case CPP_PIF: // #pragma if endif
+    YYF_MACRO
+    (
+        "#if "
+        SS_TAP(X_ENTER)
+        "#define "
+        SS_TAP(X_ENTER)
+        SS_TAP(X_ENTER)
+        SS_TAP(X_ENTER)
+        SS_TAP(X_ENTER)
+        "#endif // "
+        SS_TAP(X_UP)
+        SS_TAP(X_UP)
+        SS_TAP(X_UP)
+        SS_TAP(X_UP)
+        SS_TAP(X_UP)
+        SS_TAP(X_END)
+    );
+    return false;
 case CPP_INCLUDE: // #include 
     YYF_MACRO("#include ");
+    return false;
+case CPP_INCLUDEQ: // #include ""
+    YYF_MACRO(
+        "#include \"\""
+        SS_TAP(X_LEFT)
+    );
+    return false;
+case CPP_INCLUDEB: // #include <>
+    YYF_MACRO(
+        "#include <>"
+        SS_TAP(X_LEFT)
+    );
     return false;
 case CPP_CLASS: // class
     YYF_MACRO
@@ -99,6 +136,9 @@ case CPP_TEMPLATE: // template<>
         "template<>"
         SS_TAP(X_LEFT)
     );
+    return false;
+case CPP_TYPENAME: // typename 
+    YYF_MACRO("typename ");
     return false;
 case CPP_PUBLIC: // public:
     YYF_MACRO
@@ -233,6 +273,21 @@ case CPP_WHILE: // while () {}
         SS_TAP(X_UP)
         SS_TAP(X_UP)
         SS_TAP(X_END)
+        SS_TAP(X_LEFT)
+    );
+    return false;
+case CPP_DOWHILE: // do {} while ();
+    YYF_MACRO
+    (
+        "do"
+        SS_TAP(X_ENTER)
+        "{"
+        SS_TAP(X_ENTER)
+        SS_TAP(X_DOWN)
+        SS_TAP(X_END)
+        SS_TAP(X_ENTER)
+        "while ();"
+        SS_TAP(X_LEFT)
         SS_TAP(X_LEFT)
     );
     return false;
@@ -391,6 +446,14 @@ case CPP_SHARED: // std::shared_ptr<>
     YYF_MACRO
     (
         "std::shared_ptr<> "
+        SS_TAP(X_LEFT)
+        SS_TAP(X_LEFT)
+    );
+    return false;
+case CPP_WEAK: // std::weak_ptr<>
+    YYF_MACRO
+    (
+        "std::weak_ptr<> "
         SS_TAP(X_LEFT)
         SS_TAP(X_LEFT)
     );
