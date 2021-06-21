@@ -38,6 +38,10 @@ DEBOUNCE_TYPE = eager_pr
 # project specific files
 SRC += matrix.c \
 	   led_i2c.c
+# preject dependencies
+SRC += color.c \
+	   rgblight.c \
+	   ws2812.c
 QUANTUM_LIB_SRC += i2c_master.c
 
 LAYOUTS = ergodox

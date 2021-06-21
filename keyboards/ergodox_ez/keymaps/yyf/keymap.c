@@ -27,6 +27,8 @@
 #include "keymap_belgian.h"
 #include "keymap_us_international.h"
 
+#include "quantum/rgblight.h"
+
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -48,6 +50,12 @@ enum custom_keycodes {
   HSV_0_255_255,
   HSV_86_255_128,
   HSV_172_255_255,
+
+  #define YYF_INJECT_KEYCODES
+  #include "shared/custom_keys/id.inl"
+  #include "shared/custom_keys/cpp.inl"
+  #include "shared/custom_keys/ue4.inl"
+  #undef YYF_INJECT_KEYCODES
 };
 
 enum tap_dance_codes {
@@ -179,38 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                     KC_TRANSPARENT, KC_MS_WH_UP,
                                                                                     KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,     KC_MS_WH_DOWN,  KC_TRANSPARENT, KC_TRANSPARENT
   ),
-  /* Keymap 4: IDs
-  *
-  * ,--------------------------------------------------.           ,--------------------------------------------------.
-  * |        | YYF  |S@rfw | sf@t |      |      |      |           |      |      |      |      |      |      |        |
-  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-  * |        |YYF@g | S@sf |      |      |      |      |           |      |      |      |      |      |      |        |
-  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
-  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
-  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-  *   |      |      |      |      |      |                                       |      |      |      |      |      |
-  *   `----------------------------------'                                       `----------------------------------'
-  *                                        ,-------------.       ,-------------.
-  *                                        |      |      |       |      |      |
-  *                                 ,------|------|------|       |------+------+------.
-  *                                 |      |      |      |       |      |      |      |
-  *                                 |      |      |------|       |------|      |      |
-  *                                 |      |      |      |       |      |      |      |
-  *                                 `--------------------'       `--------------------'
-  */
-  [4] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-  /* Keymap 5: C++
+  /* Keymap 4: C++
   *
   * ,--------------------------------------------------.           ,--------------------------------------------------.
   * |        |class |struct|templ |public|protec|privat|           |  ns  |  for |  if  | while|      |      |  UPROP |
@@ -231,9 +208,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                                 |      |      |      |       |      |      |      |
   *                                 `--------------------'       `--------------------'
   */
+  [4] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, CPP_CLASS,      CPP_STRUCT,     CPP_TEMPLATE,   CPP_PUBLIC,     CPP_PROTECTED,  CPP_PRIVATE,                                    CPP_NS,         CPP_FOR,        CPP_IF,         CPP_WHILE,      KC_TRANSPARENT, KC_TRANSPARENT, UE4_UPROPERTY,
+    CPP_PO,         CPP_CTORS,      CPP_CTORDEFS,   CPP_TYPENAME,   KC_TRANSPARENT, KC_TRANSPARENT, CPP_LAMBDA,                                     CPP_NSTS,       CPP_FORI,       CPP_ELIF,       CPP_DOWHILE,    KC_TRANSPARENT, KC_TRANSPARENT, UE4_UFUNCTION,
+    CPP_IFDEF,      CPP_STRING,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 CPP_FOREACH,    CPP_ELSE,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, UE4_UCLASS,
+    CPP_PIF,        CPP_ARRAY,      CPP_VECTOR,     CPP_UMAP,       CPP_MAP,        KC_TRANSPARENT, KC_TRANSPARENT,                                 CPP_NSB,        CPP_UNIQUE,     CPP_SHARED,     CPP_WEAK,       KC_TRANSPARENT, KC_TRANSPARENT, UE4_USTRUCT,
+    CPP_INCLUDEQ,   CPP_INCLUDEB,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, UE4_UENUM,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+  /* Keymap 5: IDs
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |        | YYF  |S@rfw | sf@t |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * |        |YYF@g | S@sf |      |      |      |      |           |      |      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |      |      |      |      |      |                                       |      |      |      |      |      |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,-------------.
+  *                                        |      |      |       |      |      |
+  *                                 ,------|------|------|       |------+------+------.
+  *                                 |      |      |      |       |      |      |      |
+  *                                 |      |      |------|       |------|      |      |
+  *                                 |      |      |      |       |      |      |      |
+  *                                 `--------------------'       `--------------------'
+  */
   [5] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, ID_YYF,         ID_SRFW,        ID_SFT,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, ID_YYFG,        ID_SFSF,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -319,6 +327,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         #endif
       }
       return false;
+
+    #define YYF_INJECT_KEYCODE_HANDLERS
+    #include "shared/custom_keys/id.inl"
+    #include "shared/custom_keys/cpp.inl"
+    #include "shared/custom_keys/ue4.inl"
+    #undef YYF_INJECT_KEYCODE_HANDLERS
   }
   return true;
 }
