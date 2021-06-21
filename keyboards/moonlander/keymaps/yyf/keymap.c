@@ -57,6 +57,27 @@ enum tap_dance_codes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /* Keymap 0: Dvorak
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |  L8  |  1   |  2   |  3   |  4   |  5   |  [   |           |   ]  |   6  |   7  |   8  |   9  |   0  |   \  |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * | ~L2  |  '   |  ,   |  .   |  P   |  Y   |  (   |           |   )  |   F  |   G  |   C  |   R  |   L  |   /  |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * | Caps |  A   |  O   |  E   |  U   |  I   |  _   |           |   ;  |   D  |   H  |   T  |   N  |   S  |   -  |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |LShift|  `   |  Q   |  J   |  K   |  X   |                         |   B  |   M  |   W  |   V  |   Z  |=/RShf|
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |LCtrl | LAlt |SS/Mod| Left |Right |      /---\                 /---\      |  Up  | Down | Page | ~L4  | ~L5  |
+  * `----------------------------------'    /  Esc  \             /       \    `----------------------------------'
+  *                                      ,/     /     \.       ,/    Del    \.
+  *                                      | LeftCmd/Win |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      | Home |       |  End |      |      |
+  *                               | Tab  |Space |  /   |       |   /  | Back | Enter|
+  *                               |      |      |LCtrl |       |  LAlt| Space|      |
+  *                               `--------------------'       `--------------------'
+  */
   [0] = LAYOUT_moonlander(
     TO(6),          KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LBRACKET,                                    KC_RBRACKET,    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSLASH,      
     MO(2),          KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           KC_LPRN,                                        KC_RPRN,        KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,       
@@ -65,6 +86,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTRL,       KC_LALT,        SCMD_T(KC_PSCREEN),KC_LEFT,        KC_RIGHT,       LGUI_T(KC_ESCAPE),                                                                                                KC_DELETE,      KC_UP,          KC_DOWN,        TD(DANCE_0),    MO(4),          MO(5),          
     KC_TAB,         KC_SPACE,       LCTL_T(KC_HOME),                LALT_T(KC_END), KC_BSPACE,      KC_ENTER
   ),
+  /* Keymap 1: Qwerty
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |      |      |      |      |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |  Q   |  W   |  E   |  R   |  T   |      |           |      |   Y  |   U  |   I  |   O  |   P  |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |  A   |  S   |  D   |  F   |  G   |      |           |      |   H  |   J  |   K  |   L  |   ;  |      |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |      |  Z   |  X   |  C   |  V   |  B   |                         |   N  |   M  |   ,  |   .  |   '  |      |
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |      |      |      |      |      |      /---\                 /---\      |      |      |      |      |      |
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/           \.       ,/           \.
+  *                                      |             |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               `--------------------'       `--------------------'
+  */
   [1] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT, 
@@ -73,6 +115,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 2: Symbols
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |      |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |  !   |  @   |  {   |  }   |  |   |      |           |      |  Up  |   7  |   8  |   9  |   *  |  F12 |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |  #   |  $   |  (   |  )   |  `   |      |           |      | Down |   4  |   5  |   6  |   -  |   /  |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |      |  %   |  ^   |  [   |  ]   |  ~   |                         |   &  |   1  |   2  |   3  |   +  |      |
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |      |  ,   |      |      |      |      /---\                 /---\      |BackSp|   .  |   0  |   =  |      |
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/  Toggle   \.       ,/           \.
+  *                                      |  Animation  |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |Toggle|       |      |      |      |
+  *                               |Bright|Bright|Layer |       |      | Hue- | Hue+ |
+  *                               |  Up  | Down |Color |       |      |      |      |
+  *                               `--------------------'       `--------------------'
+  */
   [2] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_LCBR,        KC_RCBR,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UP,          KC_7,           KC_8,           KC_9,           KC_ASTR,        KC_F12,         
@@ -81,6 +144,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_COMMA,       HSV_0_255_255,  HSV_86_255_128, HSV_172_255_255,RGB_MOD,                                                                                                        RGB_TOG,        KC_BSPACE,      KC_DOT,         KC_0,           KC_EQUAL,       KC_TRANSPARENT, 
     RGB_VAD,        RGB_VAI,        TOGGLE_LAYER_COLOR,                RGB_SLD,        RGB_HUD,        RGB_HUI
   ),
+  /* Keymap 3: System Control
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |      |      |      |      |      |      |      |           |      |      |      |      |      |      | Power|
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |      |      | MsUp |      |      |      |           |      |      |      |      |      |      | Sleep|
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |      |MsLeft|MsDown|MsRght|      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |                         |      | Pause| Prev | Next |      |ScrlLk|
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * | Oryx |      |      |      |      |      /---\                 /---\      | VolUp|VolDwn| Mute |      |      |
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/           \.       ,/           \.
+  *                                      |             |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |      |       |      |      |      |
+  *                               | Left |Middle|Right |       | Wheel| Wheel|  WWW |
+  *                               |Click |Click |Click |       | Down |  Up  | Back |
+  *                               `--------------------'       `--------------------'
+  */
   [3] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_POWER,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_SLEEP,
@@ -89,6 +173,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     WEBUSB_PAIR,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_MS_BTN1,     KC_MS_BTN3,     KC_MS_BTN2,                     KC_MS_WH_DOWN,  KC_MS_WH_DOWN,  KC_WWW_BACK
   ),
+  /* Keymap 4: IDs
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |      | YYF  |S@rfw | sf@t |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |YYF@g | S@sf |      |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |                         |      |      |      |      |      |      |
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |      |      |      |      |      |      /---\                 /---\      |      |      |      |      |      |
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/           \.       ,/           \.
+  *                                      |             |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               `--------------------'       `--------------------'
+  */
   [4] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -97,6 +202,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 5: C++
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |      |class |struct|templ |public|protec|privat|           |  ns  |  for |  if  | while|      |      | UPROP|
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |# once|ctors |ctorsd|typena|      |      |lambda|           | ns ts| fori | ifel |dowhil|      |      | UFUNC|
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |#ifdef|string|      |      |      |      |      |           |ns bal| forea| else |      |      |      |UCLASS|
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * | #if  |array |vector| umap | map  |      |                         |unique|shared| weak |      |      |USTRUC|
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |#incl"|#incl<|      |      |      |      /---\                 /---\      |      |      |      |      | UENUM|
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/           \.       ,/           \.
+  *                                      |             |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               `--------------------'       `--------------------'
+  */
   [5] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -105,6 +231,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  /* Keymap 6: Navigation
+  *
+  * ,------------------------------------------------.           ,------------------------------------------------.
+  * |  L0  |  L1  |  L2  |  L3  |  L4  |  L5  |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------|           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |      |           |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------`           |------+------+------+------+------+------+------|
+  * |      |      |      |      |      |      |                         |      |      |      |      |      |      |
+  * `------+------+------+------+------+------'                         `------+------+------+------+------+------|
+  * |      |      |      |      |      |      /---\                 /---\      |      |      |      |      |      |
+  * `----------------------------------'    /       \             /       \    `----------------------------------'
+  *                                      ,/           \.       ,/           \.
+  *                                      |             |       |             |
+  *                               ,------|------|------|       |------|------|------.
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               |      |      |      |       |      |      |      |
+  *                               `--------------------'       `--------------------'
+  */
   [6] = LAYOUT_moonlander(
     TO(0),          TO(1),          TO(2),          TO(3),          TO(4),          TO(5),          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
